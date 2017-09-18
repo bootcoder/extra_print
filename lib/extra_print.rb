@@ -3,13 +3,22 @@ $COLORS = {'red' => '031','green' => '032','yellow' => '033','blue' => '034','ma
 # Using ANSI color coding to spruce things up
 # SYNTAX: \033[COLOR_CODEmINNER_TEXT\033[0m
 # There are cleaner ways of doing the color manipulation
-# But this approach allows for a zero dependency gem, which is better :-)
+# But this approach avoids extra dependencies, which is better :-)
 
+def eap(variable = nil, msg = nil)
+  return display_emoji_break unless variable
+  extra_print(variable, msg, true)
+end
 
 def ep(variable = nil, msg = nil)
-
   return display_emoji_break unless variable
+  extra_print(variable, msg)
+end
 
+private
+
+def extra_print(variable = nil, msg = nil, add_awesome_print = false)
+  # Set variables
   @color = $COLORS.values.sample
   @variable = variable
   @msg = msg ? msg : " FINISH "
@@ -17,17 +26,19 @@ def ep(variable = nil, msg = nil)
 
   # View Methods
   display_detail_header
-  display_variable
+  display_variable(add_awesome_print)
   display_footer
-
 end
 
-private
-
-def display_variable
+def display_variable(add_awesome_print)
   proc = Proc.new { @variable }
   puts
-  p proc.call
+  if add_awesome_print
+    require 'awesome_print'
+    ap proc.call if add_awesome_print
+  else
+    p proc.call unless add_awesome_print
+  end
   puts
 end
 
