@@ -3,13 +3,13 @@
 ### ```p``` all the things
 ### or in this case ```ep``` all the things!
 
-_extra_print_ is a simple Ruby Gem designed to make locating specific lines of output in the terminal easier. This is achieved by inserting headers and footers around a given variable, or by displaying a line of emojis to act as a standalone line break.
+_extra_print_ is a simple Ruby Gem designed to make locating specific lines of output in the terminal easier. This is achieved by inserting informative headers and footers around a given variable, or by displaying a line of emojis to act as a standalone line break.
 
-Extra print was built with JR web developers in mind. Hopefully this gem helps build a healthy habit around verifying the evaluation of your code instead of frequently making false assumptions around a programs state. That said, I've been programming for some time and I love highly visible debugging statements so....... maybe something about geese and ganders.
+Extra print was built with JR web developers in mind. Hopefully this gem helps build a healthy habit around verifying the evaluation of your code instead of frequently making false assumptions around a programs state. That said, I've been programming for some time and I love highly visible debugging statements so....... maybe something about geese and ganders fit here.
 
 Extra print is a fork of an idea originally put together by Dev Bootcamp grad Shawn Watson with his [attn_rubygem](https://github.com/its-swats/attn_rubygem).
 
-This gem was designed on a terminal with a black background. I personally feel everybody should be rolling a black b/g but I get it. Really I'm just putting this here to say that if it doesn't look good on your white b/g,,, sorry. (Also open a PR :-)
+This gem was designed on a terminal with a black background. I personally feel everybody should be rolling a black b/g but I get it, people have preferences that differ from my own. Really I'm just putting this here to say that if it doesn't look as good on your white b/g,,, sorry. (Also open a PR :-)
 
 ## Installation
 
@@ -19,7 +19,10 @@ dev :> gem install extra_print
 
 ## Usage
 
-It's as simple as requiring the gem in your project. Once required, extra_print has 2 modes, and a handful of colorization options.
+It's as simple as requiring the gem in your project. Once required, extra_print has two public methods.
+
+- ep
+- eap
 
 Require the gem in your file
 ```ruby
@@ -89,4 +92,3 @@ irb(main):010:0> eap(some_hash_variable, 'some hash')
 ## History
 
 * 9/16/2017 - initial release
-
