@@ -42,9 +42,14 @@ irb(main):008:0> ep(Variable_to_highlight)
 ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆  FINISH ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆
 ```
 
+The header will show the class, length (if applicable) and from what line the method was called.
+The footer will show either FINISH or a custom message
+
+Each ep or eap call wraps your variable with different random colors. Within each call the header and footer will always be the same color.
+
 ### Variable Display with footer message
 
-You can also specify a message as a second argument (string) to be displayed in the footer. Easily identifying multiple extra_print calls.
+Specify a message as a second argument (string) to be displayed in the footer. Easily identifying multiple extra_print calls.
 
 ```ruby
 irb(main):010:0> ep(Variable_to_highlight, 'thing from that place')
