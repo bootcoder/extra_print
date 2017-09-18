@@ -1,7 +1,7 @@
 # extra_print
 ### a gem to catch the eye
 
-_extra_print_ is a simple Ruby Gem designed to make locating specific lines of output in the terminal easier. This is achieved by inserting headers and footers around a given variable, or by displaying a line of emojis to act as a standalone line break.
+_extra_print_ is a simple Ruby Gem designed to make locating specific lines of output in the terminal easier. This is achieved by inserting headers and footers around a given variable, or by displaying a line of emojis to act as a standalone line break. Extra print is a fork of an idea originally put together by Shawn Watson with [attn_rubygem](https://github.com/its-swats/attn_rubygem).
 
 ## Installation
 ```
