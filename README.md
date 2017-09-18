@@ -62,13 +62,13 @@ irb(main):010:0> ep(Variable_to_highlight, 'thing from that place')
 
 ### Line Break
 
-Call the method without any arguments to insert a line of random emojis
+Call either method without any arguments to insert a line of random emojis
 ```ruby
 irb(main):002:0> ep
 🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟
 ```
 
-This can be incredibly helpful when you need to know if you made it to a particular line of code, like say inside some conditional. A standard p statement gets lost in 1000 lines of server logs but and extra_print statement stands out.
+This can be incredibly helpful when you need to know if you made it to a particular line of code, like say inside some conditional. A standard p statement gets lost in 1000 lines of server logs but an extra_print statement stands out.
 
 ### Awesome Variable Display
 
