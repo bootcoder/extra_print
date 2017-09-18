@@ -32,6 +32,10 @@ def extra_print(variable = nil, msg = nil, add_awesome_print = false)
   display_footer
 end
 
+def path_clip(path_caller)
+  path_caller[2].split('/')[-3..-1].join('/').split(':in')[0]
+end
+
 def display_variable(add_awesome_print)
   proc = Proc.new { @variable }
   puts
@@ -77,7 +81,7 @@ def display_detail_header
 
   # Show where the code was called from last
   str += "\033[#{@color}mCALLER:\033[m"
-  str += "\033[#{@secondary_color}m #{caller[-1]} \033[m"
+  str += "\033[#{@secondary_color}m #{path_clip(caller)} \033[m"
 
   # Closing arrows
   str += "\033[#{@color}m⬇ \033[m" * 5
