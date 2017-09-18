@@ -8,11 +8,13 @@ $COLORS = {'red' => '031','green' => '032','yellow' => '033','blue' => '034','ma
 def eap(variable = nil, msg = nil)
   return display_emoji_break unless variable
   extra_print(variable, msg, true)
+  variable
 end
 
 def ep(variable = nil, msg = nil)
   return display_emoji_break unless variable
   extra_print(variable, msg)
+  variable
 end
 
 private
