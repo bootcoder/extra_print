@@ -21,8 +21,8 @@ dev :> gem install extra_print
 
 It's as simple as requiring the gem in your project. Once required, extra_print has two public methods.
 
-- ep
-- eap
+- ```ep```
+- ```eap```
 
 Require the gem in your file
 ```ruby
@@ -45,7 +45,7 @@ irb(main):008:0> ep(Variable_to_highlight)
 The header will show the class, length (if applicable) and from what line the method was called.
 The footer will show either FINISH or a custom message
 
-Each ep or eap call wraps your variable with different random colors. Within each call the header and footer will always be the same color.
+Each ```ep``` or ```eap``` call wraps your variable with different random colors. Within each call the header and footer will always be the same color.
 
 ### Variable Display with footer message
 
