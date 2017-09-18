@@ -9,12 +9,16 @@ Extra print was built with JR web developers in mind. Hopefully this gem helps b
 
 Extra print is a fork of an idea originally put together by Dev Bootcamp grad Shawn Watson with his [attn_rubygem](https://github.com/its-swats/attn_rubygem).
 
+This gem was designed on a terminal with a black background. I personally feel everybody should be rolling a black b/g but I get it. Really I'm just putting this here to say that if it doesn't look good on your white b/g,,, sorry. (Also open a PR :-)
+
 ## Installation
+
 ```bash
 dev :> gem install extra_print
 ```
 
 ## Usage
+
 It's as simple as requiring the gem in your project. Once required, extra_print has 2 modes, and a handful of colorization options.
 
 Require the gem in your file
@@ -58,7 +62,6 @@ irb(main):002:0> ep
 
 This can be incredibly helpful when you need to know if you made it to a particular line of code, like say inside some conditional. A standard p statement gets lost in 1000 lines of server logs but and extra_print statement stands out.
 
-
 ### Awesome Variable Display
 
 Call ```eap``` instead of ```ep``` for __EXTRA AWESOME PRINT__ to display your variable using awesome_print. All above functionality works exactly the same.
@@ -76,6 +79,7 @@ irb(main):010:0> eap(some_hash_variable, 'some hash')
 ```
 
 ## Contributing
+
 1. Fork it!
 2. Create your feature branch: `git checkout -b my-new-feature`
 3. Commit your changes: `git commit -am 'Add some feature'`
