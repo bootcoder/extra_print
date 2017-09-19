@@ -6,13 +6,13 @@ $COLORS = {'red' => '031','green' => '032','yellow' => '033','blue' => '034','ma
 # But this approach avoids extra dependencies, which is better :-)
 
 def eap(variable = nil, msg = nil)
-  return display_emoji_break unless variable
+  return display_emoji_break(caller) unless variable
   extra_print(variable, msg, true)
   variable
 end
 
 def ep(variable = nil, msg = nil)
-  return display_emoji_break unless variable
+  return display_emoji_break(caller) unless variable
   extra_print(variable, msg)
   variable
 end
@@ -32,8 +32,9 @@ def extra_print(variable = nil, msg = nil, add_awesome_print = false)
   display_footer
 end
 
-def path_clip(path_caller)
-  path_caller[2].split('/')[-3..-1].join('/').split(':in')[0]
+def path_clip(caller_path)
+  p caller_path
+  caller_path[2].split('/')[-3..-1].join('/').split(':in')[0]
 end
 
 def display_variable(add_awesome_print)
@@ -49,9 +50,10 @@ def display_variable(add_awesome_print)
 end
 
 # 40 rando emojis for fun && eye catching line breaks
-def display_emoji_break
+def display_emoji_break(caller_path)
   chars = %w"😎 😈 👹 👺 👻 👿 💀 👽 😂 🤣 🎃 🐶 🦊 ⭐ 🌟 🏈 🏀 ⚽ ⛔ ❓ 💽 🎁 🌠 🥓 🍤 🍗 🍖 🍕 🍰 🍦 🍭"
-  puts "#{chars.sample}  " * 40
+  print "#{path_clip(caller_path)} "
+  puts  "#{chars.sample}  " * 30
 end
 
 # TODO: off by one error on dynamic footer length

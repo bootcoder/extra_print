@@ -29,17 +29,19 @@ Require the gem in your file
 irb(main):002:0> require 'extra_print'
 ```
 
+## Examples
+
+Each of these examples assumes the following local variable is defined.
+```ruby
+arr_variable = [1,"two", {three: "3"}, :four, :false]
+```
+
 ### Variable Display
 
 Pass a variable as the first argument to see it displayed like this
 
 ```ruby
-irb(main):008:0> ep(Variable_to_highlight)
-⬇ ⬇ ⬇ ⬇ ⬇  CLASS: Array LENGTH: 3 CALLER: sandbox.rb:26:in `<main>' ⬇ ⬇ ⬇ ⬇ ⬇
-
-"Variable_to_highlight"
-
-⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆  FINISH ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆
+ep(arr_variable)
 ```
 
 The header will show the class, length (if applicable) and from what line the method was called.
@@ -52,20 +54,17 @@ Each ```ep``` or ```eap``` call wraps your variable with different random colors
 Specify a message as a second argument (string) to be displayed in the footer. Easily identifying multiple extra_print calls.
 
 ```ruby
-irb(main):010:0> ep(Variable_to_highlight, 'thing from that place')
-⬇ ⬇ ⬇ ⬇ ⬇  CLASS: Array LENGTH: 3 CALLER: sandbox.rb:26:in `<main>' ⬇ ⬇ ⬇ ⬇ ⬇
-
-"Variable_to_highlight"
-
-⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ thing from that place ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆
+ep(arr_variable, 'thing from that place')
 ```
 
 ### Line Break
 
-Call either method without any arguments to insert a line of random emojis
+Call either method without any arguments to insert a line of random emojis. Call it once or multiple times.
+
 ```ruby
-irb(main):002:0> ep
-🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟  🌟
+ep
+# OR
+eap
 ```
 
 This can be incredibly helpful when you need to know if you made it to a particular line of code, like say inside some conditional. A standard p statement gets lost in 1000 lines of server logs but an extra_print statement stands out.
@@ -75,15 +74,7 @@ This can be incredibly helpful when you need to know if you made it to a particu
 Call ```eap``` instead of ```ep``` for __EXTRA AWESOME PRINT__ to display your variable using awesome_print. All above functionality works exactly the same.
 
 ```ruby
-irb(main):010:0> eap(some_hash_variable, 'some hash')
-
-⬇ ⬇ ⬇ ⬇ ⬇  CLASS: Hash LENGTH: 1 CALLER: sandbox.rb:30:in `<main>' ⬇ ⬇ ⬇ ⬇ ⬇
-
-{
-    :thing => "stuff"
-}
-
-⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆  some hash ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆ ⬆
+eap(arr_variable, 'some hash')
 ```
 
 ## Contributing
