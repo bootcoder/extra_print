@@ -1,5 +1,9 @@
 # extra_print
 
+<img src="https://media.giphy.com/media/UCqJOcLU3OGoE/giphy.gif" />
+
+
+
 ### ```p``` all the things
 ### or in this case ```ep``` all the things!
 
@@ -17,6 +21,13 @@ Note: This gem was designed on a terminal with a black background. I personally 
 dev :> gem install extra_print
 ```
 
+Or if including in a project
+
+```ruby
+# Gemfile
+gem 'extra_print'
+```
+
 ## Usage
 
 It's as simple as requiring the gem in your project. Once required, extra_print has two public methods.
@@ -24,7 +35,8 @@ It's as simple as requiring the gem in your project. Once required, extra_print 
 - ```ep```
 - ```eap```
 
-Require the gem in your file
+Require the gem in a specific file or application wide.
+
 ```ruby
 irb(main):002:0> require 'extra_print'
 ```
@@ -36,7 +48,7 @@ Each of these examples assumes the following local variable is defined.
 arr_variable = [1,"two", {three: "3"}, :four, :false]
 ```
 
-### Variable Display
+### ep(var) -- Variable Display
 
 Pass a variable as the first argument to see it displayed like this
 
@@ -51,7 +63,7 @@ The footer will show either FINISH or a custom message
 
 Each ```ep``` or ```eap``` call wraps your variable with different random colors. Within each call the header and footer will always be the same color.
 
-### Variable Display with footer message
+### ep(var, msg) -- Variable Display with footer message
 
 Specify a message as a second argument (string) to be displayed in the footer. Easily identifying multiple extra_print calls.
 
@@ -61,7 +73,7 @@ ep(arr_variable, 'thing from that place')
 
 <img src="https://www.dropbox.com/s/jdea6amjrb2kq4q/ep_with_msg.png?raw=1" />
 
-### Line Break
+### ep -- Line Break
 
 Call either method without any arguments to insert a line of random emojis. Call it once or multiple times.
 
@@ -75,7 +87,7 @@ eap
 
 This can be incredibly helpful when you need to know if you made it to a particular line of code, like say inside some conditional. A standard p statement gets lost in 1000 lines of server logs but an extra_print statement stands out.
 
-### Awesome Variable Display
+### eap -- Awesome Variable Display
 
 Call ```eap``` instead of ```ep``` for __EXTRA AWESOME PRINT__ to display your variable using awesome_print. All above functionality works exactly the same.
 
@@ -96,5 +108,3 @@ eap(arr_variable, 'some hash')
 ## History
 
 * 9/16/2017 - initial release
-
-
