@@ -44,6 +44,8 @@ Pass a variable as the first argument to see it displayed like this
 ep(arr_variable)
 ```
 
+<img src="https://www.dropbox.com/s/304tsssjyqb7y5c/ep.png?raw=1" />
+
 The header will show the class, length (if applicable) and from what line the method was called.
 The footer will show either FINISH or a custom message
 
@@ -57,6 +59,8 @@ Specify a message as a second argument (string) to be displayed in the footer. E
 ep(arr_variable, 'thing from that place')
 ```
 
+<img src="https://www.dropbox.com/s/jdea6amjrb2kq4q/ep_with_msg.png?raw=1" />
+
 ### Line Break
 
 Call either method without any arguments to insert a line of random emojis. Call it once or multiple times.
@@ -67,6 +71,8 @@ ep
 eap
 ```
 
+<img src="https://www.dropbox.com/s/355n4xmezra9wt1/line_break.png?raw=1" />
+
 This can be incredibly helpful when you need to know if you made it to a particular line of code, like say inside some conditional. A standard p statement gets lost in 1000 lines of server logs but an extra_print statement stands out.
 
 ### Awesome Variable Display
@@ -76,6 +82,8 @@ Call ```eap``` instead of ```ep``` for __EXTRA AWESOME PRINT__ to display your v
 ```ruby
 eap(arr_variable, 'some hash')
 ```
+
+<img src="https://www.dropbox.com/s/uv041yv2timjrnt/eap_with_msg.png?raw=1" />
 
 ## Contributing
 
@@ -88,3 +96,5 @@ eap(arr_variable, 'some hash')
 ## History
 
 * 9/16/2017 - initial release
+
+
