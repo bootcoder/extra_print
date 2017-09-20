@@ -66,7 +66,7 @@ Each ```ep``` or ```eap``` call wraps your variable with different random colors
 Specify a message as a second argument (string) to be displayed in the footer. Easily identifying multiple extra_print calls.
 
 ```ruby
-ep(arr_variable, 'thing from that place')
+ep(arr_variable, 'custom msg 4 debugging')
 ```
 
 <img src="https://www.dropbox.com/s/jdea6amjrb2kq4q/ep_with_msg.png?raw=1" />
@@ -76,7 +76,7 @@ ep(arr_variable, 'thing from that place')
 Call ```eap``` instead of ```ep``` for __EXTRA AWESOME PRINT__ to display your variable using awesome_print. All above functionality works exactly the same.
 
 ```ruby
-eap(arr_variable, 'some hash')
+eap(arr_variable, 'second array var')
 ```
 
 <img src="https://www.dropbox.com/s/uv041yv2timjrnt/eap_with_msg.png?raw=1" />
