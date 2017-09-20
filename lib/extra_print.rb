@@ -31,6 +31,7 @@ def extra_print(variable = nil, msg = nil, add_awesome_print = false)
   @color = $COLORS.values.sample
   @variable = variable
   @msg = msg ? msg : " FINISH "
+  # If the color being passed in is RED set secondary color to BLUE
   @secondary_color = @color == '031' ? '034' : '031'
 
   # View Methods
@@ -73,7 +74,6 @@ def display_footer
 end
 
 def display_detail_header
-  # If the color being passed in is RED set secondary color to BLUE
 
   # Initial arrows with a new line padding the top
   str = "\n"

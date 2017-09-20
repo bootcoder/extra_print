@@ -106,3 +106,4 @@ This can be incredibly helpful when you need to know if you made it to a particu
 ## History
 
 * 9/16/2017 - initial release
+* 9/19/2017 - refactor caller - add to line break
