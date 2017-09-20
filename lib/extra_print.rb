@@ -46,14 +46,12 @@ end
 
 def display_variable(add_awesome_print)
   proc = Proc.new { @variable }
-  puts
   if add_awesome_print
     require 'awesome_print'
     ap proc.call if add_awesome_print
   else
     p proc.call unless add_awesome_print
   end
-  puts
 end
 
 # 40 rando emojis for fun && eye catching line breaks
@@ -71,6 +69,7 @@ def display_footer
   str += "\033[#{@secondary_color}m #{@msg} "
   str += "\033[#{@color}m⬆ \033[0m" * ((@length / 4))
   puts str
+  puts
 end
 
 def display_detail_header
@@ -97,6 +96,7 @@ def display_detail_header
   str += "\033[#{@color}m⬇ \033[m" * 5
 
   # Output completed string
+  puts
   puts str
 
   # Set @length - non encoded string for use in footer
