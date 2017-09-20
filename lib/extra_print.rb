@@ -1,18 +1,25 @@
 $COLORS = {'red' => '031','green' => '032','yellow' => '033','blue' => '034','magenta' => '035','cyan' => '036'}
 
+#### DEBUGGING gems ####
+# require 'awesome_print'
+# require 'pry-byebug'
+########################
+
 # Using ANSI color coding to spruce things up
 # SYNTAX: \033[COLOR_CODEmINNER_TEXT\033[0m
 # There are cleaner ways of doing the color manipulation
 # But this approach avoids extra dependencies, which is better :-)
 
 def eap(variable = nil, msg = nil)
-  return display_emoji_break(caller) unless variable
+  @caller_path = caller
+  return display_emoji_break unless variable
   extra_print(variable, msg, true)
   variable
 end
 
 def ep(variable = nil, msg = nil)
-  return display_emoji_break(caller) unless variable
+  @caller_path = caller
+  return display_emoji_break unless variable
   extra_print(variable, msg)
   variable
 end
@@ -32,9 +39,8 @@ def extra_print(variable = nil, msg = nil, add_awesome_print = false)
   display_footer
 end
 
-def path_clip(caller_path)
-  p caller_path
-  caller_path[2].split('/')[-3..-1].join('/').split(':in')[0]
+def path_clip
+  @caller_path[0].split('/').last(2).join('/').split(':in')[0]
 end
 
 def display_variable(add_awesome_print)
@@ -50,10 +56,12 @@ def display_variable(add_awesome_print)
 end
 
 # 40 rando emojis for fun && eye catching line breaks
-def display_emoji_break(caller_path)
+def display_emoji_break
   chars = %w"😎 😈 👹 👺 👻 👿 💀 👽 😂 🤣 🎃 🐶 🦊 ⭐ 🌟 🏈 🏀 ⚽ ⛔ ❓ 💽 🎁 🌠 🥓 🍤 🍗 🍖 🍕 🍰 🍦 🍭"
-  print "#{path_clip(caller_path)} "
-  puts  "#{chars.sample}  " * 30
+  emoji = chars.sample
+  print  "#{emoji}  " * 15
+  print " #{path_clip}  "
+  puts  "#{emoji}  " * 15
 end
 
 # TODO: off by one error on dynamic footer length
@@ -83,7 +91,7 @@ def display_detail_header
 
   # Show where the code was called from last
   str += "\033[#{@color}mCALLER:\033[m"
-  str += "\033[#{@secondary_color}m #{path_clip(caller)} \033[m"
+  str += "\033[#{@secondary_color}m #{path_clip} \033[m"
 
   # Closing arrows
   str += "\033[#{@color}m⬇ \033[m" * 5
