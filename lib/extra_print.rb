@@ -67,7 +67,7 @@ end
 def display_footer
   str = "\033[#{@color}m⬆ " * ((@length / 4) - (@msg.length / 2) - 1)
   str += "\033[#{@secondary_color}m #{@msg} "
-  str += "\033[#{@color}m⬆ \033[0m" * ((@length / 4) + 1)
+  str += "\033[#{@color}m⬆ \033[0m" * ((@length / 4))
   puts str
   puts
 end
