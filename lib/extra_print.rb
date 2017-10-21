@@ -69,13 +69,12 @@ def display_footer
   str += "\033[#{@secondary_color}m #{@msg} "
   str += "\033[#{@color}m⬆ \033[0m" * ((@length / 4))
   puts str
-  puts
 end
 
 def display_detail_header
 
   # Initial arrows with a new line padding the top
-  str = "\n"
+  str = ""
   str += "\033[#{@color}m⬇ \033[m" * 5
 
   # Variable Class Display
