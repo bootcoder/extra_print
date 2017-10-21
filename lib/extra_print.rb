@@ -48,9 +48,9 @@ def display_variable(add_awesome_print)
   proc = Proc.new { @variable }
   if add_awesome_print
     require 'awesome_print'
-    ap proc.call if add_awesome_print
+    ap proc.call
   else
-    p proc.call unless add_awesome_print
+    p proc.call
   end
 end
 
