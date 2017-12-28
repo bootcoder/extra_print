@@ -83,6 +83,13 @@ eap(arr_variable, 'second array var')
 
 ### ep -- Line Break
 
+Have you ever done this?
+```ruby
+p "*" * 80
+```
+
+Don't be that dev. Use extra print to quickly insert a visual break into your output.
+
 Call either method without any arguments to insert a line of random emojis. Call it once or multiple times.
 
 ```ruby
