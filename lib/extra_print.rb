@@ -1,4 +1,5 @@
 $COLORS = {'red' => '031','green' => '032','yellow' => '033','blue' => '034','magenta' => '035','cyan' => '036'}
+$EMOJIS = %w"😎 😈 👹 👺 👻 👿 💀 👽 😂 🤣 🎃 🐶 🦊 ⭐ 🌟 🏈 🏀 ⚽ ⛔ ❓ 💽 🎁 🌠 🥓 🍤 🍗 🍖 🍕 🍰 🍦 🍭"
 
 #### DEBUGGING gems ####
 # require 'awesome_print'
@@ -57,8 +58,7 @@ end
 
 # 40 rando emojis for fun && eye catching line breaks
 def display_emoji_break
-  chars = %w"😎 😈 👹 👺 👻 👿 💀 👽 😂 🤣 🎃 🐶 🦊 ⭐ 🌟 🏈 🏀 ⚽ ⛔ ❓ 💽 🎁 🌠 🥓 🍤 🍗 🍖 🍕 🍰 🍦 🍭"
-  emoji = chars.sample
+  emoji = $EMOJIS.sample
   print  "#{emoji}  " * 15
   print " #{path_clip}  "
   puts  "#{emoji}  " * 15
