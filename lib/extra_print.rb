@@ -11,7 +11,6 @@ $EMOJIS = %w"😎 😈 👹 👺 👻 👿 💀 👽 😂 🤣 🎃 🐶 🦊 �
 # There are cleaner ways of doing the color manipulation
 # But this approach avoids extra dependencies, which is better :-)
 
-# def eap(variable = nil, msg = nil)
 def eap(*args)
   @caller_path = caller
   return display_emoji_break if args.empty?
@@ -56,7 +55,7 @@ def display_variable(add_awesome_print)
   end
 end
 
-# 40 rando emojis for fun && eye catching line breaks
+# rando emojis for fun && eye catching line breaks
 def display_emoji_break
   emoji = $EMOJIS.sample
   print  "#{emoji}  " * 15
