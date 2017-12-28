@@ -10,18 +10,19 @@ $COLORS = {'red' => '031','green' => '032','yellow' => '033','blue' => '034','ma
 # There are cleaner ways of doing the color manipulation
 # But this approach avoids extra dependencies, which is better :-)
 
-def eap(variable = nil, msg = nil)
+# def eap(variable = nil, msg = nil)
+def eap(*args)
   @caller_path = caller
-  return display_emoji_break unless variable
-  extra_print(variable, msg, true)
-  variable
+  return display_emoji_break if args.empty?
+  extra_print(args[0], args[1], true)
+  args[0]
 end
 
-def ep(variable = nil, msg = nil)
+def ep(*args)
   @caller_path = caller
-  return display_emoji_break unless variable
-  extra_print(variable, msg)
-  variable
+  return display_emoji_break if args.empty?
+  extra_print(args[0], args[1])
+  args[0]
 end
 
 private

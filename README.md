@@ -107,3 +107,4 @@ This can be incredibly helpful when you need to know if you made it to a particu
 
 * 9/16/2017 - initial release
 * 9/19/2017 - refactor caller - add to line break
+* 12/27/2017 - add / correct nil variable output
