@@ -49,6 +49,10 @@ def display_variable(add_awesome_print)
   proc = Proc.new { @variable }
   if add_awesome_print
     require 'awesome_print'
+    AwesomePrint.defaults = {
+      indent: -2, # left aligned
+      sort_keys: true, # sort hash keys
+    }
     ap proc.call
   else
     p proc.call
