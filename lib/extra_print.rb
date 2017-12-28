@@ -6,22 +6,25 @@ $EMOJIS = %w"😎 😈 👹 👺 👻 👿 💀 👽 😂 🤣 🎃 🐶 🦊 �
 # require 'pry-byebug'
 ########################
 
+# Simply call ep or eap (extra_awesome_print) and pass a variable you want to inspect.
+# Alternatively, call ep or eap with no arguments to display an emoji line break when evaluated.
+
 # Using ANSI color coding to spruce things up
 # SYNTAX: \033[COLOR_CODEmINNER_TEXT\033[0m
 # There are cleaner ways of doing the color manipulation
 # But this approach avoids extra dependencies, which is better :-)
 
-def eap(*args)
-  @caller_path = caller
-  return display_emoji_break if args.empty?
-  extra_print(args[0], args[1], true)
-  args[0]
-end
-
 def ep(*args)
   @caller_path = caller
   return display_emoji_break if args.empty?
   extra_print(args[0], args[1])
+  args[0]
+end
+
+def eap(*args)
+  @caller_path = caller
+  return display_emoji_break if args.empty?
+  extra_print(args[0], args[1], true)
   args[0]
 end
 
