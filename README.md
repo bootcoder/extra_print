@@ -102,6 +102,9 @@ eap
 
 This can be incredibly helpful when you need to know if you made it to a particular line of code, like say inside some conditional. A standard p statement gets lost in 1000 lines of server logs but an extra_print statement stands out.
 
+### Return Values
+Both ```ep``` & ```eap``` return nil if no argument is passed. If one or more arguments are passed the first argument (variable) is returned. So you can ```ep some_var``` at the end of a function without disrupting your existing flow or needing a separate return statement.
+
 ## Contributing
 
 1. Fork it!
