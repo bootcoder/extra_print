@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'extra_print'
-  s.version     = '1.1.5'
-  s.date        = '2017-12-29'
+  s.version     = '1.1.6'
+  s.date        = '2018-01-01'
   s.summary     = "Easily spot variables printed in a busy console."
   s.description = "Debugging Companion: Informative variable wrappers || visual breaks."
   s.authors     = ["Hunter T. Chapman"]
