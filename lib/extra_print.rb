@@ -1,18 +1,19 @@
 $COLORS = {'red' => '031','green' => '032','yellow' => '033','blue' => '034','magenta' => '035','cyan' => '036'}
-$EMOJIS = %w"😎 😈 👹 👺 👻 👿 💀 👽 😂 🤣 🎃 🐶 🦊 ⭐ 🌟 🏈 🏀 ⚽ ⛔ ❓ 💽 🎁 🌠 🥓 🍤 🍗 🍖 🍕 🍰 🍦 🍭"
+$EMOJIS = %w"😎 😈 👹 👺 👻 👿 💀 👽 😂 🤣 🎃 🐶 🦊 ⭐ 🌟 🏈 🏀 ⚽ ⛔ ♻️ ❓ 💽 🎁 🌠 🥓 🥑 🥦 🍤 🍗 🍖 🍕 🍰 🥃 💰 🍦 🍭 🤯 🤬 🐞 💛 💚 💙 💜"
 
 #### DEBUGGING gems ####
 # require 'awesome_print'
 # require 'pry-byebug'
 ########################
 
-# Simply call ep or eap (extra_awesome_print) and pass a variable you want to inspect.
-# Alternatively, call ep or eap with no arguments to display an emoji line break when evaluated.
 
 # Using ANSI color coding to spruce things up
 # SYNTAX: \033[COLOR_CODEmINNER_TEXT\033[0m
 # There are cleaner ways of doing the color manipulation
 # But this approach avoids extra dependencies, which is better :-)
+
+# Simply call ep or eap (extra_awesome_print) and pass a variable you want to inspect.
+# Alternatively, call ep or eap with no arguments to display an emoji line break when evaluated.
 
 def ep(*args)
   @caller_path = caller
