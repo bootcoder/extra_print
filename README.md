@@ -75,6 +75,8 @@ ep(arr_variable, 'custom msg 4 debugging')
 
 Call ```eap``` instead of ```ep``` for __EXTRA AWESOME PRINT__ to display your variable using awesome_print. All above functionality works exactly the same.
 
+Personally, I always use ```eap``` because I LOVE awesome_print!
+
 ```ruby
 eap(arr_variable, 'second array var')
 ```
@@ -90,7 +92,7 @@ p "*" * 80
 
 Don't be that dev. Use extra print to quickly insert a visual break into your output.
 
-Call either method without any arguments to insert a line of random emojis. Call it once or multiple times.
+Call either method without any arguments to insert a random emoji line. Call it once or multiple times. Each call will use a random emoji. Note: Currently, uniqueness is not  guaranteed in this respect.
 
 ```ruby
 ep
@@ -103,7 +105,16 @@ eap
 This can be incredibly helpful when you need to know if you made it to a particular line of code, like say inside some conditional. A standard p statement gets lost in 1000 lines of server logs but an extra_print statement stands out.
 
 ### Return Values
-Both ```ep``` & ```eap``` return nil if no argument is passed. If one or more arguments are passed the first argument (variable) is returned. So you can ```ep some_var``` at the end of a function without disrupting your existing flow or needing a separate return statement.
+
+Both ```ep``` & ```eap``` share return values for the following cases:
+
+- ```nil``` - IF no argument is passed
+
+- ```nil``` - IF executing extra_print in a REPL or console.
+
+- ```variable``` - IF one or more arguments are passed, return the first argument
+
+This way you can throw an ```ep``` in front of a returned variable at the end of a function without disrupting the existing flow or needing a separate return statement after your inspection ala awesome_print.
 
 ## Contributing
 

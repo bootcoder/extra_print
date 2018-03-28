@@ -19,14 +19,14 @@ def ep(*args)
   @caller_path = caller
   return display_emoji_break if args.empty?
   extra_print(args[0], args[1])
-  args[0]
+  return_value(args[0])
 end
 
 def eap(*args)
   @caller_path = caller
   return display_emoji_break if args.empty?
   extra_print(args[0], args[1], true)
-  args[0]
+  return_value(args[0])
 end
 
 private
@@ -43,6 +43,13 @@ def extra_print(variable = nil, msg = nil, add_awesome_print = false)
   display_detail_header
   display_variable(add_awesome_print)
   display_footer
+end
+
+# Checks to see if running in a Ruby file
+# IF so returns value, enabling ep's from the end of a method without disrupting functionality.
+# ELSE returns nil, presuming it is running in a REPL and we don't want to see our output doubled because the REPL prints the return value as well.
+def return_value(val)
+  $0.split('.').last == 'rb' ? val : nil
 end
 
 def path_clip
