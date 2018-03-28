@@ -2,10 +2,15 @@
 
 <img src="https://media.giphy.com/media/UCqJOcLU3OGoE/giphy.gif" />
 
-### ```p``` all the things
-### or in this case ```ep``` all the things!
+#### When I was first starting out [supertopher](https://www.github.com/supertopher) constantly told me to ```p``` all the things!
 
-__extra_print__ is a simple Ruby Gem designed to highlight p'd variables and make locating specific lines of output in the terminal easier. This is achieved by wrapping a given variable in bright arrows, or by displaying a line of emojis to act as a standalone line break when the method is called with no argument.
+#### As engineers we should always be growing our knowledge set and evolving our practices.
+
+#### Now I ```eap``` all the things!
+
+## Description && History
+
+__extra_print__ is a simple Ruby Gem designed to highlight variable inspection and make locating specific lines of output in the terminal easier. This is achieved by wrapping a given variable in bright arrows, or by displaying a line of emojis to act as a standalone line break.
 
 __extra_print__ was built with all ruby devs in mind. From the JR just starting out up through DHH & Matz. Hopefully this gem helps build a healthy habit around verifying the evaluation of your code instead of making false assumptions around a programs state. That said, I've been programming for some time and I love highly visible debugging statements so....... maybe something about geese and ganders fits here.
 
@@ -43,15 +48,23 @@ irb(main):002:0> require 'extra_print'
 
 Each of these examples assumes the following local variable is defined.
 ```ruby
-arr_variable = [1,"two", {three: "3"}, :four, :false]
+arr_var = [1,"two", {three: "3"}, :four, :false]
 ```
 
 ### ep(var) -- Variable Display
 
-Pass a variable as the first argument to see it displayed like this
+#### Have you ever done this?
 
 ```ruby
-ep(arr_variable)
+p "*" * 30
+p "arr_var: #{arr_var}"
+p "*" * 30
+```
+
+With extra_print simply pass a variable as the first argument to see it displayed like this
+
+```ruby
+ep(arr_var)
 ```
 
 <img src="https://www.dropbox.com/s/304tsssjyqb7y5c/ep.png?raw=1" />
@@ -61,31 +74,32 @@ The footer will show either FINISH or a custom message
 
 Each ```ep``` or ```eap``` call wraps your variable with different random colors. Within each call the header and footer will always be the same color.
 
-### ep(var, msg) -- Variable Display with footer message
+### ep(var, 'msg') -- Variable Display with footer message
 
 Specify a message as a second argument (string) to be displayed in the footer. Easily identifying multiple extra_print calls.
 
 ```ruby
-ep(arr_variable, 'custom msg 4 debugging')
+ep(arr_var, 'custom msg 4 debugging')
 ```
 
 <img src="https://www.dropbox.com/s/jdea6amjrb2kq4q/ep_with_msg.png?raw=1" />
 
 ### eap -- Awesome Variable Display
 
-Call ```eap``` instead of ```ep``` for __EXTRA AWESOME PRINT__ to display your variable using awesome_print. All above functionality works exactly the same.
+Call ```eap``` instead of ```ep``` for extra awesome print! This displays your variable using awesome_print. All above functionality works exactly the same.
 
 Personally, I always use ```eap``` because I LOVE awesome_print!
 
 ```ruby
-eap(arr_variable, 'second array var')
+eap(arr_var, 'second array var')
 ```
 
 <img src="https://www.dropbox.com/s/uv041yv2timjrnt/eap_with_msg.png?raw=1" />
 
 ### ep -- Line Break
 
-Have you ever done this?
+#### Have you ever done this?
+
 ```ruby
 p "*" * 80
 ```
@@ -101,6 +115,26 @@ eap
 ```
 
 <img src="https://www.dropbox.com/s/355n4xmezra9wt1/line_break.png?raw=1" />
+
+#### B-E-EFFICIENT
+
+This first Ruby print statement is inefficient for three reasons:
+
+- At an absolute bare minimum this is 10 keystrokes, usually more.
+- Depending on the size of your console it could still take a long time to track down as the stars can blend into massive output.
+- If you have multiple such print statements, you'll have no way of identifying which is which, you can change the symbol you print but then you're just going to be doing a lot of back and forth, 'Did I put the * here, or was it the &, or the #...'
+
+
+Addressing these inefficiencies, extra_prints ```ep``` gives you.
+
+- 2 keystrokes to insert a break.
+- Highly visual break with a distinct color to differentiate from console clutter.
+- Each ```ep``` statement includes its callers location, making console to code sync a cinch.
+
+#### Note:
+
+There is no difference between the two so just use ```ep``` and save the keystroke.
+
 
 This can be incredibly helpful when you need to know if you made it to a particular line of code, like say inside some conditional. A standard p statement gets lost in 1000 lines of server logs but an extra_print statement stands out.
 
@@ -129,3 +163,4 @@ This way you can throw an ```ep``` in front of a returned variable at the end of
 * 9/16/2017 - initial release
 * 9/19/2017 - refactor caller - add to line break
 * 12/27/2017 - add / correct nil variable output
+* 03/28/2018 - modify return value for REPL execution
