@@ -33,11 +33,20 @@ private
 
 def extra_print(variable = nil, msg = nil, add_awesome_print = false)
   # Set variables
-  @color = $COLORS.values.sample
   @variable = variable
   @msg = msg ? msg : " FINISH "
-  # If the color being passed in is RED set secondary color to BLUE
-  @secondary_color = @color == '031' ? '034' : '031'
+
+  # No red/green if calling from a spec
+  if $0.split('.').last[/spec|test/]
+    $COLORS.delete('red')
+    $COLORS.delete('green')
+    @color = $COLORS.values.sample
+    @secondary_color = '034'
+  else
+    @color = $COLORS.values.sample
+    # If the color being passed in is RED set secondary color to BLUE
+    @secondary_color = @color == '031' ? '034' : '031'
+  end
 
   # View Methods
   display_detail_header
