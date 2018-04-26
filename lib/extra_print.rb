@@ -12,8 +12,26 @@ $EMOJIS = %w"😎 😈 👹 👺 👻 👿 💀 👽 😂 🤣 🎃 🐶 🦊 �
 # There are cleaner ways of doing the color manipulation
 # But this approach avoids extra dependencies, which is better :-)
 
-# Simply call ep or eap (extra_awesome_print) and pass a variable you want to inspect.
-# Alternatively, call ep or eap with no arguments to display an emoji line break when evaluated.
+# Simply call pe or pea (extra_awesome_print) and pass a variable you want to inspect.
+# Alternatively, call pe or pea with no arguments to display an emoji line break and calling line info.
+
+def pe(*args)
+  @caller_path = caller
+  return display_emoji_break if args.empty?
+  extra_print(args[0], args[1])
+  return_value(args[0])
+end
+
+def pea(*args)
+  @caller_path = caller
+  return display_emoji_break if args.empty?
+  extra_print(args[0], args[1], true)
+  return_value(args[0])
+end
+
+#######################################################################
+# NOTE: LEGACY CODE #ep #eap ensure compatibility for future versions #
+#######################################################################
 
 def ep(*args)
   @caller_path = caller
