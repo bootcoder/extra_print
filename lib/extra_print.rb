@@ -49,7 +49,12 @@ end
 # IF so returns value, enabling ep's from the end of a method without disrupting functionality.
 # ELSE returns nil, presuming it is running in a REPL and we don't want to see our output doubled because the REPL prints the return value as well.
 def return_value(val)
-  $0.split('.').last == 'rb' ? val : nil
+  return val if defined?(Rails::Server)
+  return nil if defined?(Rails::Console)
+  return nil if $0.split('.').last.include? 'pry'
+  return nil if $0.split('.').last.include? 'irb'
+  return val if $0.split('.').last == 'rb'
+  val
 end
 
 def path_clip
@@ -64,7 +69,7 @@ def display_variable(add_awesome_print)
       indent: -2, # left aligned
       sort_keys: true, # sort hash keys
     }
-    ap proc.call
+    ap @variable
   else
     p proc.call
   end
