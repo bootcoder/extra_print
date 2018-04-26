@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'extra_print'
-  s.version     = '1.1.8'
+  s.version     = '2.0.0'
   s.date        = '2018-04-25'
   s.summary     = "Easily spot variables printed in a busy console."
   s.description = "Debugging Companion: Informative variable inspection || visual breaks."
