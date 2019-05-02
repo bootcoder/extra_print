@@ -1,5 +1,5 @@
 <h1 align='center'>extra_print</h1>
-<p align='center'><img src="https://media.giphy.com/media/UCqJOcLU3OGoE/giphy.gif" /></p>
+<p align='center'><img src="https://media1.tenor.com/images/471df38770cdafe174b361fb0dce362d/tenor.gif" /></p>
 
 #### When I was first starting out [supertopher](https://www.github.com/supertopher) told me everyday to *p all the things!*
 
