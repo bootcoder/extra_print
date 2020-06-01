@@ -51,8 +51,8 @@ private
 
 def extra_print(variable = nil, msg = nil, add_amazing_print = false)
   # Set variables
+  @msg      = msg
   @variable = variable
-  @msg = msg ? msg : " FINISH "
 
   # No red/green if calling from a spec
   if $0.split('.').last[/spec|test/]
@@ -67,9 +67,9 @@ def extra_print(variable = nil, msg = nil, add_amazing_print = false)
   end
 
   # View Methods
-  display_detail_header
+  display_detail_bar(true)
   display_variable(add_amazing_print)
-  display_footer
+  @msg ? display_msg_footer : display_detail_bar(false)
 end
 
 # Checks to see if running in a Ruby file
@@ -111,18 +111,19 @@ def display_emoji_break
 end
 
 # TODO: off by one error on dynamic footer length
-def display_footer
+def display_msg_footer
   str = "\033[#{@color}m⬆ " * ((@length / 4) - (@msg.length / 2) - 1)
   str += "\033[#{@secondary_color}m #{@msg} "
   str += "\033[#{@color}m⬆ \033[0m" * ((@length / 4))
   puts str
 end
 
-def display_detail_header
+def display_detail_bar(top_bar = true)
+  arrow = top_bar ? "⬇" : "⬆"
 
   # Initial arrows with a new line padding the top
   str = ""
-  str += "\033[#{@color}m⬇ \033[m" * 5
+  str += "\033[#{@color}m#{arrow} \033[m" * 5
 
   # Variable Class Display
   str += "\033[#{@color}m CLASS:\033[m"
@@ -139,7 +140,7 @@ def display_detail_header
   str += "\033[#{@secondary_color}m #{path_clip} \033[m"
 
   # Closing arrows
-  str += "\033[#{@color}m⬇ \033[m" * 5
+  str += "\033[#{@color}m#{arrow} \033[m" * 5
 
   # Output completed string
   puts
