@@ -92,7 +92,7 @@ def display_variable(add_amazing_print)
   proc = Proc.new { @variable }
   if add_amazing_print
     require 'amazing_print'
-    AwesomePrint.defaults = {
+    AmazingPrint.defaults = {
       indent: -2, # left aligned
       sort_keys: true, # sort hash keys
     }
