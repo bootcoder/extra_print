@@ -9,5 +9,5 @@ Gem::Specification.new do |s|
   s.files       = ["lib/extra_print.rb"]
   s.homepage    = 'https://github.com/bootcoder/extra_print'
   s.license     = 'MIT'
-  s.add_runtime_dependency 'awesome_print', '~> 1.8', '>= 1.8.0'
+  s.add_runtime_dependency 'amazing_print', '~> 1.1', '>= 1.1.0'
 end

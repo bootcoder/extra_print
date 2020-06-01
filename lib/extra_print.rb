@@ -2,7 +2,7 @@ $COLORS = {'red' => '031','green' => '032','yellow' => '033','blue' => '034','ma
 $EMOJIS = %w"😎 😈 👹 👺 👻 👿 💀 👽 😂 🤣 🎃 🐶 🦊 ⭐ 🌟 🏈 🏀 ⚽ ⛔ ♻️ ❓ 💽 🎁 🌠 🥓 🥑 🥦 🍤 🍗 🍖 🍕 🍰 🥃 💰 🍦 🍭 🤯 🤬 🐞 💛 💚 💙 💜"
 
 #### DEBUGGING gems ####
-# require 'awesome_print'
+# require 'amazing_print'
 # require 'pry-byebug'
 ########################
 
@@ -12,7 +12,7 @@ $EMOJIS = %w"😎 😈 👹 👺 👻 👿 💀 👽 😂 🤣 🎃 🐶 🦊 �
 # There are cleaner ways of doing the color manipulation
 # But this approach avoids extra dependencies, which is better :-)
 
-# Simply call pe or pea (extra_awesome_print) and pass a variable you want to inspect.
+# Simply call pe or pea (extra_amazing_print) and pass a variable you want to inspect.
 # Alternatively, call pe or pea with no arguments to display an emoji line break and calling line info.
 
 def pe(*args)
@@ -49,7 +49,7 @@ end
 
 private
 
-def extra_print(variable = nil, msg = nil, add_awesome_print = false)
+def extra_print(variable = nil, msg = nil, add_amazing_print = false)
   # Set variables
   @variable = variable
   @msg = msg ? msg : " FINISH "
@@ -68,7 +68,7 @@ def extra_print(variable = nil, msg = nil, add_awesome_print = false)
 
   # View Methods
   display_detail_header
-  display_variable(add_awesome_print)
+  display_variable(add_amazing_print)
   display_footer
 end
 
@@ -88,10 +88,10 @@ def path_clip
   @caller_path[0].split('/').last(2).join('/').split(':in')[0]
 end
 
-def display_variable(add_awesome_print)
+def display_variable(add_amazing_print)
   proc = Proc.new { @variable }
-  if add_awesome_print
-    require 'awesome_print'
+  if add_amazing_print
+    require 'amazing_print'
     AwesomePrint.defaults = {
       indent: -2, # left aligned
       sort_keys: true, # sort hash keys
