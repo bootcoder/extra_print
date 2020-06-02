@@ -1,4 +1,4 @@
-$COLORS = {'red' => '031','green' => '032','yellow' => '033','blue' => '034','magenta' => '035','cyan' => '036'}
+$COLORS = {'red' => '031','green' => '032','yellow' => '033','blue' => '094','magenta' => '035','cyan' => '036', 'gray' => '037', 'light_red' => '091', 'light_green' => '092', 'light_magenta' => '095', 'light_cyan' => '096'}
 $EMOJIS = %w"😎 😈 👹 👺 👻 👿 💀 👽 😂 🤣 🎃 🐶 🦊 ⭐ 🌟 🏈 🏀 ⚽ ⛔ ♻️ ❓ 💽 🎁 🌠 🥓 🥑 🥦 🍤 🍗 🍖 🍕 🍰 🥃 💰 🍦 🍭 🤯 🤬 🐞 💛 💚 💙 💜"
 
 #### DEBUGGING gems ####
@@ -53,23 +53,26 @@ def extra_print(variable = nil, msg = nil, add_amazing_print = false)
   # Set variables
   @msg      = msg
   @variable = variable
-
-  # No red/green if calling from a spec
-  if $0.split('.').last[/spec|test/]
-    $COLORS.delete('red')
-    $COLORS.delete('green')
-    @color = $COLORS.values.sample
-    @secondary_color = '034'
-  else
-    @color = $COLORS.values.sample
-    # If the color being passed in is RED set secondary color to BLUE
-    @secondary_color = @color == '031' ? '034' : '031'
-  end
-
-  # View Methods
+  set_colors
+  # Build upper, center, lower sections
   display_detail_bar(true)
   display_variable(add_amazing_print)
   @msg ? display_msg_footer : display_detail_bar(false)
+end
+
+def set_colors
+  # No red/green if calling from a spec
+  @secondary_color = '092'
+  if $0.split('.').last[/spec|test/]
+    $COLORS.delete('red')
+    $COLORS.delete('light_red')
+    $COLORS.delete('light_green')
+    $COLORS.delete('green')
+  end
+  @color = $COLORS.values.sample
+  # If primary color passed is GREEN set secondary color to RED
+  @secondary_color = '031' if @color == '092'
+  @secondary_color = '031' if @color == '032'
 end
 
 # Checks to see if running in a Ruby file
@@ -143,7 +146,7 @@ def display_detail_bar(top_bar = true)
   str += "\033[#{@color}m#{arrow} \033[m" * 5
 
   # Output completed string
-  puts
+  puts if top_bar # add single line of top padding to eap output
   puts str
 
   # Set @length - non encoded string for use in footer
