@@ -168,3 +168,4 @@ OG extra_print users can still use ```ep``` and ```eap```. These calls will cont
 * 12/27/2017 - add / correct nil variable output
 * 03/28/2018 - modify return value for REPL execution
 * 04/25/2018 - ep / eap => pe / pea - fix return val bug in Rails server
+* 06/02/2020 - dep awesome_print => amazing_print (better maintained) | Mod colors | Better footer
