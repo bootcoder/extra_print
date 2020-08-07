@@ -1,8 +1,8 @@
-$COLORS = {'red' => '031','green' => '032','yellow' => '033','blue' => '034','magenta' => '035','cyan' => '036'}
+$COLORS = {'red' => '031','green' => '032','yellow' => '033','blue' => '094','magenta' => '035','cyan' => '036', 'gray' => '037', 'light_red' => '091', 'light_green' => '092', 'light_magenta' => '095', 'light_cyan' => '096'}
 $EMOJIS = %w"😎 😈 👹 👺 👻 👿 💀 👽 😂 🤣 🎃 🐶 🦊 ⭐ 🌟 🏈 🏀 ⚽ ⛔ ♻️ ❓ 💽 🎁 🌠 🥓 🥑 🥦 🍤 🍗 🍖 🍕 🍰 🥃 💰 🍦 🍭 🤯 🤬 🐞 💛 💚 💙 💜"
 
 #### DEBUGGING gems ####
-# require 'awesome_print'
+# require 'amazing_print'
 # require 'pry-byebug'
 ########################
 
@@ -12,7 +12,7 @@ $EMOJIS = %w"😎 😈 👹 👺 👻 👿 💀 👽 😂 🤣 🎃 🐶 🦊 �
 # There are cleaner ways of doing the color manipulation
 # But this approach avoids extra dependencies, which is better :-)
 
-# Simply call pe or pea (extra_awesome_print) and pass a variable you want to inspect.
+# Simply call pe or pea (extra_amazing_print) and pass a variable you want to inspect.
 # Alternatively, call pe or pea with no arguments to display an emoji line break and calling line info.
 
 def pe(*args)
@@ -49,27 +49,30 @@ end
 
 private
 
-def extra_print(variable = nil, msg = nil, add_awesome_print = false)
+def extra_print(variable = nil, msg = nil, add_amazing_print = false)
   # Set variables
+  @msg      = msg
   @variable = variable
-  @msg = msg ? msg : " FINISH "
+  set_colors
+  # Build upper, center, lower sections
+  display_detail_bar(true)
+  display_variable(add_amazing_print)
+  @msg ? display_msg_footer : display_detail_bar(false)
+end
 
+def set_colors
   # No red/green if calling from a spec
+  @secondary_color = '092'
   if $0.split('.').last[/spec|test/]
     $COLORS.delete('red')
+    $COLORS.delete('light_red')
+    $COLORS.delete('light_green')
     $COLORS.delete('green')
-    @color = $COLORS.values.sample
-    @secondary_color = '034'
-  else
-    @color = $COLORS.values.sample
-    # If the color being passed in is RED set secondary color to BLUE
-    @secondary_color = @color == '031' ? '034' : '031'
   end
-
-  # View Methods
-  display_detail_header
-  display_variable(add_awesome_print)
-  display_footer
+  @color = $COLORS.values.sample
+  # If primary color passed is GREEN set secondary color to RED
+  @secondary_color = '031' if @color == '092'
+  @secondary_color = '031' if @color == '032'
 end
 
 # Checks to see if running in a Ruby file
@@ -88,11 +91,11 @@ def path_clip
   @caller_path[0].split('/').last(2).join('/').split(':in')[0]
 end
 
-def display_variable(add_awesome_print)
+def display_variable(add_amazing_print)
   proc = Proc.new { @variable }
-  if add_awesome_print
-    require 'awesome_print'
-    AwesomePrint.defaults = {
+  if add_amazing_print
+    require 'amazing_print'
+    AmazingPrint.defaults = {
       indent: -2, # left aligned
       sort_keys: true, # sort hash keys
     }
@@ -111,18 +114,19 @@ def display_emoji_break
 end
 
 # TODO: off by one error on dynamic footer length
-def display_footer
+def display_msg_footer
   str = "\033[#{@color}m⬆ " * ((@length / 4) - (@msg.length / 2) - 1)
   str += "\033[#{@secondary_color}m #{@msg} "
   str += "\033[#{@color}m⬆ \033[0m" * ((@length / 4))
   puts str
 end
 
-def display_detail_header
+def display_detail_bar(top_bar = true)
+  arrow = top_bar ? "⬇" : "⬆"
 
   # Initial arrows with a new line padding the top
   str = ""
-  str += "\033[#{@color}m⬇ \033[m" * 5
+  str += "\033[#{@color}m#{arrow} \033[m" * 5
 
   # Variable Class Display
   str += "\033[#{@color}m CLASS:\033[m"
@@ -139,10 +143,10 @@ def display_detail_header
   str += "\033[#{@secondary_color}m #{path_clip} \033[m"
 
   # Closing arrows
-  str += "\033[#{@color}m⬇ \033[m" * 5
+  str += "\033[#{@color}m#{arrow} \033[m" * 5
 
   # Output completed string
-  puts
+  puts if top_bar # add single line of top padding to eap output
   puts str
 
   # Set @length - non encoded string for use in footer

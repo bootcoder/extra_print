@@ -85,9 +85,9 @@ pe(arr_var, 'custom msg 4 debugging')
 
 ### pea -- Awesome Variable Display
 
-Call ```pea``` instead of ```pe``` for extra awesome print! This displays your variable using awesome_print. All above functionality works exactly the same.
+Call ```pea``` instead of ```pe``` for extra awesome print! This displays your variable using amazing_print. All above functionality works exactly the same.
 
-Personally, I always use ```pea``` because I LOVE awesome_print!
+Personally, I always use ```pea``` because I LOVE amazing_print!
 
 ```ruby
 pea(arr_var, 'second array var')
@@ -142,7 +142,7 @@ Both ```pe``` & ```pea``` share return values for the following cases:
 - ```nil``` - IF executing extra_print in a REPL or console.
 - ```variable``` - IF one or more arguments are passed, return the first argument
 
-This way you can throw an ```pe``` in front of a returned variable at the end of a function without disrupting the existing flow or needing a spearate return statement after your inspection ala awesome_print.
+This way you can throw an ```pe``` in front of a returned variable at the end of a function without disrupting the existing flow or needing a spearate return statement after your inspection ala amazing_print.
 
 extra_print also has enviroment dependant return values.
 
@@ -168,3 +168,4 @@ OG extra_print users can still use ```ep``` and ```eap```. These calls will cont
 * 12/27/2017 - add / correct nil variable output
 * 03/28/2018 - modify return value for REPL execution
 * 04/25/2018 - ep / eap => pe / pea - fix return val bug in Rails server
+* 06/02/2020 - dep awesome_print => amazing_print (better maintained) | Mod colors | Better footer
