@@ -12,7 +12,7 @@ $EMOJIS = %w"😎 😈 👹 👺 👻 👿 💀 👽 😂 🤣 🎃 🐶 🦊 �
 # There are cleaner ways of doing the color manipulation
 # But this approach avoids extra dependencies, which is better :-)
 
-# Simply call pe or pea (extra_amazing_print) and pass a variable you want to inspect.
+# Simply call pe or pea (extra_amazing_print) and pass an input you want to inspect.
 # Alternatively, call pe or pea with no arguments to display an emoji line break and calling line info.
 
 def pe(*args)
@@ -47,17 +47,20 @@ def eap(*args)
   return_value(args[0])
 end
 
-private
+# private
 
-def extra_print(variable = nil, msg = nil, add_amazing_print = false)
-  # Set variables
-  @msg      = msg
-  @variable = variable
+def extra_print(input = nil, msg = nil, add_amazing_print = false)
+  # Set inputs
+  @msg   = msg
+  @input = input
+  @input = input.to_unsafe_h if @input.class ==  ActionController::Parameters
   set_colors
   # Build upper, center, lower sections
   display_detail_bar(true)
-  display_variable(add_amazing_print)
-  @msg ? display_msg_footer : display_detail_bar(false)
+  display_input(add_amazing_print)
+  puts "Empty? #{@msg&.to_s&.empty?}"
+  p @msg&.to_s&.empty?
+  @msg.nil? ? display_detail_bar(false) : display_msg_footer
 end
 
 def set_colors
@@ -80,7 +83,8 @@ end
 # ELSE returns nil, presuming it is running in a REPL and we don't want to see our output doubled because the REPL prints the return value as well.
 def return_value(val)
   return val if defined?(Rails::Server)
-  return nil if defined?(Rails::Console)
+  return nil if Rails&.env == 'test'
+  return nil if Rails&.const_defined? 'Console'
   return nil if $0.split('.').last.include? 'pry'
   return nil if $0.split('.').last.include? 'irb'
   return val if $0.split('.').last == 'rb'
@@ -91,15 +95,15 @@ def path_clip
   @caller_path[0].split('/').last(2).join('/').split(':in')[0]
 end
 
-def display_variable(add_amazing_print)
-  proc = Proc.new { @variable }
+def display_input(add_amazing_print)
+  proc = Proc.new { @input }
   if add_amazing_print
     require 'amazing_print'
     AmazingPrint.defaults = {
       indent: -2, # left aligned
       sort_keys: true, # sort hash keys
     }
-    ap @variable
+    ap @input
   else
     p proc.call
   end
@@ -115,9 +119,12 @@ end
 
 # TODO: off by one error on dynamic footer length
 def display_msg_footer
-  str = "\033[#{@color}m⬆ " * ((@length / 4) - (@msg.length / 2) - 1)
-  str += "\033[#{@secondary_color}m #{@msg} "
-  str += "\033[#{@color}m⬆ \033[0m" * ((@length / 4))
+  footer_text   = @msg.to_s[0..(@length / 2)]
+  buffer_length = (@length - footer_text.length - 1) / 4
+
+  str = "\033[#{@color}m⬆ " * buffer_length
+  str += "\033[#{@secondary_color}m #{footer_text} "
+  str += "\033[#{@color}m⬆ \033[0m" * buffer_length
   puts str
 end
 
@@ -128,14 +135,14 @@ def display_detail_bar(top_bar = true)
   str = ""
   str += "\033[#{@color}m#{arrow} \033[m" * 5
 
-  # Variable Class Display
+  # input Class Display
   str += "\033[#{@color}m CLASS:\033[m"
-  str += "\033[#{@secondary_color}m #{@variable.class} \033[m"
+  str += "\033[#{@secondary_color}m #{@input.class} \033[m"
 
-  # IF variable has a length display it
-  if @variable.respond_to?(:length)
+  # IF input has a length display it
+  if @input.respond_to?(:length)
     str += "\033[#{@color}mLENGTH:\033[m"
-    str += "\033[#{@secondary_color}m #{@variable.length} \033[m"
+    str += "\033[#{@secondary_color}m #{@input.length} \033[m"
   end
 
   # Show where the code was called from last
