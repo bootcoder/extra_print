@@ -58,8 +58,6 @@ def extra_print(input = nil, msg = nil, add_amazing_print = false)
   # Build upper, center, lower sections
   display_detail_bar(true)
   display_input(add_amazing_print)
-  puts "Empty? #{@msg&.to_s&.empty?}"
-  p @msg&.to_s&.empty?
   @msg.nil? ? display_detail_bar(false) : display_msg_footer
 end
 
